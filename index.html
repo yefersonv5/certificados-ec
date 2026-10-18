@@ -6,33 +6,37 @@
 <title>Certificados masivos | EC El Bosque</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#2E3220; --muted:#676B58; --line:#D8DBCD; --bg:#F1F2EC; --panel:#FFFFFF; --desk:#DFE2D6;
-  --accent:#E0701F; --accent-dark:#C45E12; --accent-soft:#FCEBDD;
+  --ink:#1F2B37; --muted:#5B6672; --line:#DCE3E2; --bg:#F3F6F5; --panel:#FFFFFF; --desk:#E3EAE8;
+  --slate:#2F3D4C; --teal:#014B48; --teal-dark:#003A37; --lime:#6BD20A; --lime-dark:#58B300; --lime-soft:#EAF8DA;
+  --accent:#0B7A5E; --accent-dark:#014B48; --accent-soft:#E2F3EC;
   --ok:#46731A; --ok-soft:#E7F0DC; --warn:#8F5E08; --warn-soft:#FBF0D7;
   --err:#B3261E; --err-soft:#F9E1DF; --info:#3F6474; --info-soft:#E3EDF1;
 }
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
-body{font-family:Montserrat,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.45;display:flex;flex-direction:column}
+body{font-family:'Plus Jakarta Sans',"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.45;display:flex;flex-direction:column}
 [hidden]{display:none!important}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
-.top{display:flex;align-items:center;justify-content:space-between;padding:12px 22px;background:var(--panel);border-bottom:1px solid var(--line);gap:16px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px}
-.mark{width:38px;height:38px;border-radius:10px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px}
-.brand h1{font-size:17px;margin:0;font-weight:700}
-.brand p{margin:0;font-size:12px;color:var(--muted)}
+.top{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--teal);color:#fff;margin:14px 22px 0;border-radius:18px;padding:16px 24px}
+.top::after{content:"";position:absolute;right:-70px;bottom:-150px;width:260px;height:260px;border-radius:50%;background:var(--lime);opacity:.9}
+.top-t,.top-actions{position:relative;z-index:1}
+.top-t h1{margin:0;font-size:22px;font-weight:800;letter-spacing:-.01em}
+.top-t p{margin:2px 0 0;font-size:12.5px;color:var(--lime);font-weight:600}
 .top-actions{display:flex;gap:8px}
+.top .btn.ghost{background:var(--teal-dark);border-color:rgba(255,255,255,.35);color:#fff}
+.top .btn.ghost:hover:not(:disabled){background:#fff;color:var(--teal)}
 
-.app{flex:1;display:grid;grid-template-columns:370px 1fr;min-height:0}
-.side{background:var(--panel);border-right:1px solid var(--line);overflow:auto;padding-bottom:24px}
+.app{flex:1;display:grid;grid-template-columns:370px 1fr;min-height:0;gap:14px;padding:14px 22px 18px}
+.side{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:auto;padding-bottom:24px}
+.main{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}
 .step{padding:18px 22px;border-bottom:1px solid var(--line)}
 .step-h{display:flex;align-items:center;gap:10px;margin-bottom:4px}
-.num{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;font-size:12px;font-weight:700;flex:none}
-.step.done .num{background:var(--ok);border-color:var(--ok);color:#fff}
+.num{width:26px;height:26px;border-radius:50%;border:0;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700;flex:none}
+.step.done .num{background:var(--lime);color:var(--teal-dark)}
 .step h2{font-size:14.5px;margin:0;font-weight:700}
 .hint{color:var(--muted);font-size:12.5px;margin:4px 0 12px}
 .hint.small{font-size:12px;margin:8px 0 0}
@@ -43,11 +47,11 @@ body{font-family:Montserrat,"Segoe UI",Arial,sans-serif;color:var(--ink);backgro
 .drop svg{flex:none;color:var(--accent)}
 .drop small{display:block;font-weight:500;color:var(--muted);font-size:11.5px}
 
-.btn{font:inherit;font-weight:600;font-size:13px;border-radius:8px;padding:9px 14px;border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;color:var(--ink);background:transparent;text-decoration:none}
-.btn.primary{background:var(--accent);color:#fff;width:100%;padding:12px;font-size:14px;margin-top:14px}
-.btn.primary:hover:not(:disabled){background:var(--accent-dark)}
+.btn{font:inherit;font-weight:700;font-size:13px;border-radius:999px;padding:9px 14px;border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;color:var(--ink);background:transparent;text-decoration:none}
+.btn.primary{background:var(--lime);color:var(--teal-dark);width:100%;padding:13px;font-size:14.5px;margin-top:14px}
+.btn.primary:hover:not(:disabled){background:var(--lime-dark)}
 .btn.ghost{border-color:var(--line);background:#fff}
-.btn.ghost:hover:not(:disabled){border-color:var(--ink)}
+.btn.ghost:hover:not(:disabled){border-color:var(--teal);color:var(--teal)}
 .btn.small{padding:7px 11px;font-size:12.5px}
 .btn.block{width:100%;margin-top:8px}
 .btn.icon{width:36px;height:36px;padding:0;border-color:var(--line);background:#fff;font-size:18px;flex:none}
@@ -79,10 +83,10 @@ textarea{resize:vertical;min-height:52px}
 .sw{width:24px;height:24px;border-radius:6px;border:2px solid #fff;box-shadow:0 0 0 1px var(--line);cursor:pointer;padding:0}
 .sw.on{box-shadow:0 0 0 2px var(--ink)}
 input[type=color]{width:34px;height:28px;padding:0 2px;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer}
-.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:4px;background:#fff}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-top:4px;background:#fff}
 .seg button{font:inherit;font-size:12px;font-weight:500;padding:6px 11px;border:0;background:#fff;cursor:pointer;color:var(--ink)}
 .seg button+button{border-left:1px solid var(--line)}
-.seg button.on{background:var(--ink);color:#fff}
+.seg button.on{background:var(--teal);color:#fff}
 .seg button:disabled{color:#B0B3A4;cursor:not-allowed}
 .check{display:flex;align-items:center;gap:8px;font-size:13px;margin-top:12px;cursor:pointer}
 .check input{accent-color:var(--accent);width:16px;height:16px;margin:0}
@@ -92,27 +96,28 @@ input[type=color]{width:34px;height:28px;padding:0 2px;border:1px solid var(--li
 .del{color:var(--err);background:none;border:0;font:inherit;font-size:12px;font-weight:600;cursor:pointer;margin-top:14px;padding:0}
 
 .main{display:flex;flex-direction:column;min-width:0;min-height:0}
-.tabs{display:flex;gap:4px;padding:10px 22px 0;background:var(--panel);border-bottom:1px solid var(--line)}
-.tab{font:inherit;font-weight:600;font-size:13.5px;padding:9px 16px;border:1px solid transparent;border-bottom:0;border-radius:8px 8px 0 0;background:transparent;color:var(--muted);cursor:pointer;margin-bottom:-1px}
-.tab.on{background:var(--bg);border-color:var(--line);color:var(--ink)}
-.tab .cnt{display:inline-block;min-width:20px;padding:0 6px;border-radius:999px;font-size:11px;margin-left:4px;background:var(--line);color:var(--ink)}
+.tabs{display:flex;gap:6px;padding:10px 16px;background:var(--slate)}
+.tab{font:inherit;font-weight:700;font-size:13.5px;padding:8px 18px;border:0;border-radius:999px;background:transparent;color:rgba(255,255,255,.75);cursor:pointer;margin-bottom:-1px}
+.tab.on{background:var(--lime);color:var(--teal-dark)}
+.tab:hover:not(.on){color:#fff}
+.tab .cnt{display:inline-block;min-width:20px;padding:0 6px;border-radius:999px;font-size:11px;margin-left:4px;background:rgba(255,255,255,.85);color:var(--teal-dark)}
 .tab .cnt.err{background:var(--err);color:#fff}
 .pane{flex:1;overflow:auto;padding:18px 22px}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
 .nav{display:flex;align-items:center;gap:6px;min-width:0;flex:1;max-width:560px}
 .nav select{margin:0}
-.stage-wrap{background:var(--desk);border-radius:14px;padding:22px;display:flex;align-items:flex-start;min-height:300px;overflow:auto}
+.stage-wrap{background:var(--desk);border-radius:16px;padding:22px;display:flex;align-items:flex-start;min-height:300px;overflow:auto}
 .stage{flex:none;margin:0 auto;position:relative;background:#fff;box-shadow:0 1px 2px rgba(46,50,32,.12),0 14px 34px -14px rgba(46,50,32,.4);user-select:none;-webkit-user-select:none}
 .stage canvas{display:block}
 .stage.picking,.stage.picking .fbox{cursor:crosshair}
 .ov{position:absolute;inset:0;pointer-events:none}
-.fbox{position:absolute;pointer-events:auto;cursor:grab;outline:1px dashed rgba(224,112,31,.4);outline-offset:3px;touch-action:none}
-.fbox:hover{outline-color:rgba(224,112,31,.85)}
+.fbox{position:absolute;pointer-events:auto;cursor:grab;outline:1px dashed rgba(11,122,94,.45);outline-offset:3px;touch-action:none}
+.fbox:hover{outline-color:rgba(11,122,94,.9)}
 .fbox.sel{outline:1.5px dashed var(--accent)}
 .fbox.bad{outline:1.5px dashed var(--err)}
 .fbox.drag{cursor:grabbing}
 .ftext{white-space:pre}
-.ftag{position:absolute;left:-3px;top:-24px;font:600 10.5px Montserrat,Arial,sans-serif;background:var(--accent);color:#fff;padding:2px 7px;border-radius:4px;white-space:nowrap;opacity:0;pointer-events:none}
+.ftag{position:absolute;left:-3px;top:-24px;font:600 10.5px 'Plus Jakarta Sans',Arial,sans-serif;background:var(--accent);color:#fff;padding:2px 7px;border-radius:4px;white-space:nowrap;opacity:0;pointer-events:none}
 .fbox.sel .ftag,.fbox:hover .ftag{opacity:1}
 .guide{position:absolute;top:0;bottom:0;left:50%;border-left:1px solid var(--accent);pointer-events:none}
 .empty{align-self:center;margin:auto;text-align:center;max-width:380px;color:var(--muted);border:1.5px dashed #B6BBA5;border-radius:14px;padding:40px 28px;background:rgba(255,255,255,.55);cursor:pointer}
@@ -120,7 +125,7 @@ input[type=color]{width:34px;height:28px;padding:0 2px;border:1px solid var(--li
 .empty strong{display:block;color:var(--ink);font-size:15px;margin:10px 0 4px}
 .center{text-align:center}
 .zoom{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.btn.ghost.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.ghost.on{background:var(--teal);border-color:var(--teal);color:#fff}
 #zPct{min-width:52px;text-align:center;font-weight:600;font-size:12.5px}
 .zoom .btn.icon{width:32px;height:32px;font-size:16px}
 
@@ -136,6 +141,7 @@ td{padding:8px 10px;border-bottom:1px solid #EEF0E8;vertical-align:top}
 td.n{color:var(--muted);width:44px}
 td.nm{font-weight:600;min-width:180px}
 tr.off td{opacity:.5}
+tr.off.st-err td{opacity:1}
 td input[type=checkbox],th input[type=checkbox]{accent-color:var(--accent);width:16px;height:16px;margin:0}
 .tag{display:inline-block;font-size:11px;font-weight:600;padding:2px 7px;border-radius:5px;margin:1px 4px 1px 0}
 .tag.err{background:var(--err-soft);color:var(--err)}
@@ -144,8 +150,59 @@ td input[type=checkbox],th input[type=checkbox]{accent-color:var(--accent);width
 .tag.ok{background:var(--ok-soft);color:var(--ok)}
 .empty-row{padding:36px;text-align:center;color:var(--muted)}
 
+.rev-status{display:flex;gap:12px;align-items:center;border-radius:14px;padding:12px 16px;margin-bottom:12px;font-size:13px}
+.rev-status b{display:block;font-size:14.5px;margin-bottom:1px}
+.rev-status .ico{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;flex:none}
+.rev-status.err{background:var(--err-soft);color:#7d1a14}.rev-status.err .ico{background:var(--err)}
+.rev-status.warn{background:var(--warn-soft);color:#6b4606}.rev-status.warn .ico{background:var(--warn)}
+.rev-status.ok{background:var(--ok-soft);color:#2f5210}.rev-status.ok .ico{background:var(--ok)}
+.tiles{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tile{font:inherit;text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 14px;font-size:12px;color:var(--muted);min-width:104px;cursor:pointer}
+.tile b{display:block;font-size:20px;color:var(--ink);line-height:1.2}
+.tile.ok b{color:var(--ok)} .tile.warn b{color:var(--warn)} .tile.err b{color:var(--err)} .tile.edit b{color:var(--accent)}
+.tile:hover{border-color:var(--teal)} .tile.on{border-color:var(--teal);box-shadow:0 0 0 2px var(--teal) inset}
+.dbox{background:var(--warn-soft);color:#6b4606;border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:12.5px}
+.dbox p{margin:4px 0 0}
+.issues{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:12px}
+.itl{font-size:12px;font-weight:700;color:var(--muted);margin-right:4px}
+.ig{display:inline-flex;align-items:center;border-radius:999px;border:1px solid;background:#fff;overflow:hidden;font-size:12px;font-weight:600}
+.ig button{font:inherit;border:0;background:transparent;color:inherit;cursor:pointer;padding:5px 10px;display:inline-flex;align-items:center;gap:6px}
+.ig .c{border-radius:999px;padding:0 6px;font-size:11px;line-height:17px;color:#fff}
+.ig.err .c{background:var(--err)} .ig.warn .c{background:var(--warn)} .ig.info .c{background:var(--info)}
+.ig.err{border-color:#EDB5B0;color:var(--err)} .ig.warn{border-color:#E6CD92;color:var(--warn)} .ig.info{border-color:#C4D6DE;color:var(--info)}
+.ig.on{box-shadow:0 0 0 2px currentColor inset}
+.ig .fa{border-left:1px solid currentColor;font-weight:700}
+.ig .fa:hover,.ig button:hover{background:rgba(0,0,0,.04)}
+.rev-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.rev-tools #revQ{max-width:340px;margin:0;border-radius:999px;padding-left:14px}
+input.cell{border:1px solid transparent;field-sizing:content;background:transparent;padding:5px 7px;border-radius:6px;width:100%;min-width:96px;margin:0;font-size:12.5px;color:var(--ink)}
+input.cell:hover{border-color:var(--line);background:#fff}
+input.cell:focus{border-color:var(--accent);background:#fff;outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+input.cell.err{background:var(--err-soft);border-color:#EDB5B0}
+input.cell.warn{background:var(--warn-soft);border-color:#E6CD92}
+input.cell.edited{box-shadow:inset 3px 0 0 var(--lime-dark)}
+tr.st-err td:first-child{box-shadow:inset 3px 0 0 var(--err)} tr.st-warn td:first-child{box-shadow:inset 3px 0 0 var(--warn)}
+td.tg{padding-top:0}
+tr.has-sub td{border-bottom:0}
+tr.sub td{padding-top:0;padding-bottom:10px}
+td.act{width:60px;text-align:right}
+td:has(> input.cell){min-width:90px}
+td:has(> input.cell[data-c*="orreo"]),td:has(> input.cell[data-c*="ail"]){min-width:200px}
+.tag button{font:inherit;font-weight:700;border:0;background:#fff;border-radius:4px;padding:0 6px;margin-left:6px;cursor:pointer;color:inherit}
+.tag.info{font-weight:500}
+.gensum{margin:8px 0 0;font-size:12px;color:var(--muted);text-align:center}
+.gensum button{font:inherit;font-weight:700;color:var(--accent);background:none;border:0;cursor:pointer;text-decoration:underline;padding:0}
+.single-box{margin-top:16px;padding:12px 14px;border-radius:14px;background:var(--bg)}
+.single-box strong{font-size:13px}
+.single-box .hint{margin:2px 0 0}
+.mbox.wide{max-width:1240px;height:min(780px,100%)}
+.sgrid{display:grid;grid-template-columns:320px 1fr;flex:1;min-height:0}
+.sform{padding:16px 18px;overflow:auto;border-right:1px solid var(--line)}
+.sform .hint{margin-top:0}
+#sIssues{margin-top:14px}
+.btn.primary.small-p{width:auto;margin:0;padding:8px 16px;font-size:13px}
 .progress{height:6px;background:#EEF0E8;border-radius:4px;overflow:hidden;margin-top:10px}
-#progBar{height:100%;width:0;background:var(--accent);transition:width .15s}
+#progBar{height:100%;width:0;background:var(--lime-dark);transition:width .15s}
 #genInfo{font-weight:600;color:var(--ink)}
 .banner{background:var(--err-soft);color:var(--err);padding:10px 22px;font-size:13px;font-weight:600}
 
@@ -162,7 +219,12 @@ td input[type=checkbox],th input[type=checkbox]{accent-color:var(--accent);width
 @media (max-width:900px){
   body{display:block;height:auto}
   .app{display:block}
-  .side{border-right:0;border-bottom:1px solid var(--line)}
+  .sgrid{display:block;overflow:auto}
+  .sform{border-right:0;border-bottom:1px solid var(--line)}
+  .main{margin-top:14px}
+  .top{margin:12px 12px 0;padding:14px 18px}
+  .top::after{width:160px;height:160px;right:-80px;bottom:-110px}
+  .app{padding:12px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -170,9 +232,9 @@ td input[type=checkbox],th input[type=checkbox]{accent-color:var(--accent);width
 <body>
 <div class="banner" id="libBanner" hidden>No se pudieron cargar los componentes de la herramienta. Revisa la conexión a internet y vuelve a abrir el archivo.</div>
 <header class="top">
-  <div class="brand">
-    <div class="mark">EC</div>
-    <div><h1>Certificados masivos</h1><p>División de Educación Continuada, Universidad El Bosque</p></div>
+  <div class="top-t">
+    <h1>Certificados masivos</h1>
+    <p>Educación Continuada · Universidad El Bosque</p>
   </div>
   <div class="top-actions">
     <label class="btn ghost small" title="Carga un modelo guardado con su plantilla y campos">Abrir modelo<input type="file" id="modelIn" accept=".json" hidden></label>
@@ -229,11 +291,17 @@ td input[type=checkbox],th input[type=checkbox]{accent-color:var(--accent);width
     <input id="batch" value="Certificados">
     <label class="check"><input type="checkbox" id="numChk" checked>Numerar los archivos en el orden elegido (001_, 002_...)</label>
     <button class="btn primary" id="genBtn" disabled>Generar certificados</button>
+    <p class="gensum" id="genSum"></p>
     <div class="progress" id="prog" hidden><div id="progBar"></div></div>
     <p class="hint small" id="genInfo"></p>
     <p class="hint small">Se descarga un ZIP con un PDF por participante y el archivo control_envio.xlsx para hacer el envío con Power Automate. Si necesitas todos los certificados juntos, descárgalos en un solo PDF.</p>
     <button class="btn ghost small block" id="mergeBtn" disabled>Descargar todos en un solo PDF</button>
     <button class="btn ghost small block" id="ctrlBtn" disabled>Descargar solo el Excel de control</button>
+    <div class="single-box">
+      <strong>¿Necesitas uno solo?</strong>
+      <p class="hint small">Para reexpedir o corregir un certificado sin cargar toda la base.</p>
+      <button class="btn ghost small block" id="singleBtn" disabled>Certificado individual</button>
+    </div>
   </section>
 </aside>
 
@@ -261,7 +329,7 @@ td input[type=checkbox],th input[type=checkbox]{accent-color:var(--accent);width
     </div>
     <div class="stage-wrap" id="stageWrap">
       <div class="empty" id="stageEmpty" tabindex="0" role="button">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#E0701F" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M7 10h10M9 13.5h6"/></svg>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0B7A5E" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M7 10h10M9 13.5h6"/></svg>
         <strong>Sube la plantilla del certificado</strong>
         Haz clic aquí o arrastra el PDF o la imagen del certificado sin datos del participante.
       </div>
@@ -271,23 +339,20 @@ td input[type=checkbox],th input[type=checkbox]{accent-color:var(--accent);width
         <div class="ov" id="ov"></div>
       </div>
     </div>
-    <p class="hint small center" id="stageHint" hidden>Arrastra los campos para ubicarlos. Con un campo seleccionado, las flechas lo mueven 1 punto (Mayús + flecha: 5 puntos). La línea naranja aparece cuando el campo queda centrado.</p>
+    <p class="hint small center" id="stageHint" hidden>Arrastra los campos para ubicarlos. Con un campo seleccionado, las flechas lo mueven 1 punto (Mayús + flecha: 5 puntos). La línea verde aparece cuando el campo queda centrado.</p>
   </section>
 
   <section id="pReview" class="pane" hidden>
-    <div class="rev-head">
-      <div class="stats" id="stats"></div>
-      <div class="seg" id="filters" role="group" aria-label="Filtrar participantes">
-        <button data-f="all" class="on">Todos</button><button data-f="err">Con errores</button><button data-f="warn">Advertencias</button><button data-f="ok">Listos</button>
-      </div>
+    <div id="revStatus" class="rev-status" hidden></div>
+    <div class="tiles" id="stats"></div>
+    <div id="designIssues"></div>
+    <div class="issues" id="issues"></div>
+    <div class="rev-tools">
+      <input id="revQ" type="text" placeholder="Buscar por nombre, documento, correo o fila" aria-label="Buscar participante">
+      <button class="btn ghost small" id="fixedBtn" disabled title="Descarga tu base con las correcciones hechas aquí, para guardarla en el archivo">Descargar base corregida</button>
     </div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th><input type="checkbox" id="allChk" aria-label="Incluir o excluir todos los visibles"></th><th>Fila</th><th>Nombre en el certificado</th><th>Documento</th><th>Correo</th><th>Revisión</th><th></th></tr></thead>
-        <tbody id="tbody"></tbody>
-      </table>
-    </div>
-    <p class="hint small">Las filas con errores quedan excluidas del lote automáticamente. Puedes incluir o excluir cualquier fila con la casilla.</p>
+    <div class="table-wrap"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table></div>
+    <p class="hint small">Haz clic en cualquier dato para corregirlo (Enter pasa a la fila siguiente, Esc deshace). Las correcciones se aplican a los certificados y al Excel de control, no a tu archivo original. Las filas con errores quedan fuera del lote; con la casilla puedes incluir o excluir cualquier fila.</p>
   </section>
 </main>
 </div>
@@ -302,6 +367,18 @@ td input[type=checkbox],th input[type=checkbox]{accent-color:var(--accent);width
       </div>
     </div>
     <div class="mbody" id="mBody"><canvas id="mCv"></canvas></div>
+  </div>
+</div>
+<div class="modal" id="single" hidden role="dialog" aria-modal="true" aria-labelledby="sTitle">
+  <div class="mbox wide">
+    <div class="mhead">
+      <h3 id="sTitle">Certificado individual</h3>
+      <div style="display:flex;gap:8px">
+        <button class="btn primary small-p" id="sDown">Descargar PDF</button>
+        <button class="btn ghost small" id="sClose">Cerrar</button>
+      </div>
+    </div>
+    <div class="sgrid"><div class="sform" id="sForm"></div><div class="mbody" id="sBody"><canvas id="sCv"></canvas></div></div>
   </div>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -327,7 +404,7 @@ const SWATCHES = [['#0097D4','Azul EECS'],['#729000','Verde El Bosque'],['#00000
 const LH = 1.15, BASELINE = 0.92;
 
 const S = { base:null, lib:null, jsDoc:null, jsPage:null, sc:1, wb:null, sheet:'', rows:[], rowN:[], cols:[], detect:{},
-  fields:[], sel:null, cur:0, override:{}, res:[], global:[], metrics:{}, pick:null, filter:'all', patternAuto:true, lastPrev:null, zoom:'fit', rendered:false, order:[], orderMode:'last' };
+  fields:[], sel:null, cur:0, override:{}, res:[], global:[], metrics:{}, pick:null, filter:'all', patternAuto:true, lastPrev:null, zoom:'fit', rendered:false, order:[], orderMode:'last', orig:[], edited:new Set(), single:null, singleBytes:null, tplText:[], baseName:'' };
 
 // Fuentes para medir texto (mismas métricas que el PDF final)
 { const d = await PDFDocument.create(); for (const [k] of FONT_OPTS) S.metrics[k] = await d.embedFont(k); }
@@ -346,7 +423,7 @@ function hexRgb(h){ const m = /^#?([0-9a-f]{6})$/i.exec(h||''); const n = m ? pa
 function colFor(k){ const f = fold(k); return S.cols.find(c => fold(c) === f) || null; }
 function refs(t){ return [...String(t).matchAll(/\{([^}]+)\}/g)].map(m => m[1]); }
 function val(row, col){ return col === S.detect.doc ? cleanDoc(row[col]) : norm(row[col]); }
-function fill(t, row){ return String(t).replace(/\{([^}]+)\}/g, (m,k) => { const c = colFor(k); return c ? val(row,c) : m; }); }
+function fill(t, row){ return String(t).replace(/\{([^}]+)\}/g, (m,k) => { let c = colFor(k); if (!c && row) c = Object.keys(row).find(x => fold(x) === fold(k)); return c ? val(row,c) : m; }); }
 function fieldLines(f, row){
   let t = row ? fill(f.text, row) : String(f.text).replace(/\{([^}]+)\}/g, '$1');
   if (f.upper) t = t.toLocaleUpperCase('es');
@@ -408,6 +485,10 @@ async function setBase(bytes, name){
   S.jsDoc = await pdfjsLib.getDocument({data: bytes.slice()}).promise;
   S.jsPage = await S.jsDoc.getPage(1);
   S.lib = lib; S.base = {bytes, name, w:cb.width, h:cb.height, ox:cb.x, oy:cb.y};
+  S.tplText = [];
+  try { const tc = await S.jsPage.getTextContent(), vp = S.jsPage.getViewport({scale:1});
+    tc.items.forEach(it => { const t = norm(it.str); if (t.length < 2) return; const [x, y] = vp.convertToViewportPoint(it.transform[4], it.transform[5]); S.tplText.push({s:t, x0:x, x1:x + it.width, y}); });
+  } catch(e){ console.warn(e); }
   if (!S.fields.length) defaultFields();
   $('tplName').innerHTML = esc(name) + '<small>Clic para cambiar la plantilla</small>';
   $('tplDrop').classList.add('has');
@@ -502,13 +583,13 @@ function bindBox(box, f){
       const snap = Math.abs(nx - .5) < .006; if (snap) nx = .5; $('guide').hidden = !snap;
       f.x = clamp(nx, 0, 1); f.y = clamp(ny, 0, 1); place(box, f);
     };
-    const up = () => { box.removeEventListener('pointermove', move); box.removeEventListener('pointerup', up); box.removeEventListener('pointercancel', up); box.classList.remove('drag'); $('guide').hidden = true; };
+    const up = () => { box.removeEventListener('pointermove', move); box.removeEventListener('pointerup', up); box.removeEventListener('pointercancel', up); box.classList.remove('drag'); $('guide').hidden = true; scheduleValidate(); };
     box.addEventListener('pointermove', move); box.addEventListener('pointerup', up); box.addEventListener('pointercancel', up);
   });
   box.addEventListener('keydown', e => {
     const k = {ArrowLeft:[-1,0], ArrowRight:[1,0], ArrowUp:[0,-1], ArrowDown:[0,1]}[e.key]; if (!k) return;
     e.preventDefault(); const st = e.shiftKey ? 5 : 1;
-    f.x = clamp(f.x + k[0]*st / S.base.w, 0, 1); f.y = clamp(f.y + k[1]*st / S.base.h, 0, 1); place(box, f);
+    f.x = clamp(f.x + k[0]*st / S.base.w, 0, 1); f.y = clamp(f.y + k[1]*st / S.base.h, 0, 1); place(box, f); scheduleValidate();
   });
   box.addEventListener('focus', () => { if (S.sel !== f.id) selectField(f.id); });
 }
@@ -608,7 +689,7 @@ function detectCols(){
 }
 async function loadRows(file){
   try {
-    const buf = await file.arrayBuffer(); S.wb = XLSX.read(buf, {type:'array'});
+    const buf = await file.arrayBuffer(); S.wb = XLSX.read(buf, {type:'array'}); S.baseName = file.name.replace(/\.[^.]+$/, '');
     const names = S.wb.SheetNames;
     $('sheetSel').innerHTML = names.map((n,i) => `<option value="${i}">${esc(n)}</option>`).join('');
     $('sheetWrap').hidden = names.length < 2;
@@ -629,7 +710,7 @@ function useSheet(i){
       const o = {}; S.cols.forEach((h,j) => o[h] = r[j] ?? ''); S.rows.push(o); S.rowN.push(hi + 2 + k);
     });
   }
-  S.cur = 0; S.override = {}; detectCols(); S.orderMode = S.detect.last ? 'last' : 'name'; computeOrder(); applyAuto(); refreshAll();
+  S.cur = 0; S.override = {}; S.filter = 'all'; S.orig = S.rows.map(r => ({...r})); S.edited = new Set(); detectCols(); S.orderMode = S.detect.last ? 'last' : 'name'; computeOrder(); applyAuto(); refreshAll();
   toast(S.rows.length ? `${S.rows.length} participantes cargados` : 'No encontré filas con datos en esta hoja', S.rows.length ? '' : 'err');
 }
 $('sheetSel').addEventListener('change', e => useSheet(+e.target.value));
@@ -676,67 +757,268 @@ function renderColInfo(){
   el.innerHTML = `<strong>${S.rows.length} participantes</strong> en la hoja «${esc(S.sheet)}».<dl>${item('Nombre', nameTxt)}${item('Documento', d.doc)}${item('Tipo de documento', d.type)}${item('Correo', d.mail)}${item('Celular', d.cel)}</dl>`;
 }
 
-/* ---------- revisión ---------- */
+/* ---------- revisión inteligente ---------- */
+const CODE_T = {
+  missing:'Datos faltantes', fit:'El texto no cabe', glyph:'Caracteres que no se pueden imprimir', shrink:'Letra reducida para que quepa',
+  dupdoc:'Documento repetido', dupname:'Posible persona duplicada', dupmail:'Correo compartido', filedup:'Nombre de archivo repetido',
+  nameMail:'Correo en la columna de nombre', nameNum:'Números en el nombre', nameSym:'Símbolos extraños en el nombre', nameShort:'Nombre sin apellido',
+  nameRep:'Palabra repetida en el nombre', nameSame:'Nombres y apellidos iguales', nameTitle:'Nombre con título (Dr., Dra.)',
+  docAlpha:'C.C. con letras', docLen:'C.C. de longitud inusual', docCel:'Documento igual al celular', docClean:'Documento ajustado',
+  typeMiss:'Sin tipo de documento', typeVar:'Tipo de documento escrito distinto',
+  mailMiss:'Sin correo', mailBad:'Correo inválido', mailTypo:'Posible error en el correo', mailClean:'Correo ajustado', cross:'Columnas cruzadas',
+  celMiss:'Sin celular', celBad:'Celular inválido', celLen:'Celular colombiano incompleto'
+};
+const LV_ORDER = {err:0, warn:1, info:2};
+const MAIL_LABELS = ['gmail','hotmail','outlook','yahoo','live','icloud','msn','aol','protonmail'];
+const COM_TYPO = /^(con|cmo|ocm|vom|xom|cpm|comm|om|cm)$/;
+function lev(a, b){
+  if (Math.abs(a.length - b.length) > 2) return 9;
+  let p = Array.from({length:b.length + 1}, (_, j) => j);
+  for (let i = 1; i <= a.length; i++){ const c = [i]; for (let j = 1; j <= b.length; j++) c[j] = Math.min(p[j] + 1, c[j-1] + 1, p[j-1] + (a[i-1] === b[j-1] ? 0 : 1)); p = c; }
+  return p[b.length];
+}
+function mailFix(m){
+  const at = m.lastIndexOf('@'); if (at < 1) return null;
+  const user = m.slice(0, at + 1), dom = m.slice(at + 1), dot = dom.indexOf('.');
+  if (dot < 1) return null;
+  const label = dom.slice(0, dot), tld = dom.slice(dot + 1);
+  if (/^unbosque\./.test(dom) || lev(dom, 'unbosque.edu.co') <= 2) return dom === 'unbosque.edu.co' ? null : user + 'unbosque.edu.co';
+  let lab = label;
+  if (!MAIL_LABELS.includes(label)){ const near = MAIL_LABELS.find(k => label.length >= 4 && lev(label, k) <= 2); if (!near) return null; lab = near; }
+  let t = tld;
+  if (COM_TYPO.test(tld)) t = 'com';
+  else if (/^com\.(con|cmo|ocm)$/.test(tld)) t = 'com';
+  if (lab === 'gmail' && t !== 'com') t = 'com';
+  const fixed = lab + '.' + t;
+  return fixed === dom ? null : user + fixed;
+}
+function typeKey(t){ const k = fold(t).replace(/[.\s]/g,''); return /^(cc|cedula|ceduladeciudadania|cedulaciudadania)$/.test(k) ? 'cc' : k; }
+const TITLE_RE = /^(dr|dra|doctor|doctora|enf|lic|ing)\.?\s+/i;
 function included(i){ return i in S.override ? S.override[i] : !S.res[i]?.some(x => x.lv === 'err'); }
+function designIssues(){
+  const out = [], {w, h} = S.base, row = S.rows[S.cur] || null;
+  const boxes = S.fields.map(f => {
+    const L = layout(f, fieldLines(f, row)), n = Math.max(1, L.lines.length);
+    return {f, x0:(f.x - f.maxW/2) * w, x1:(f.x + f.maxW/2) * w, y0:f.y * h - L.size * BASELINE, y1:f.y * h + (n - 1) * L.size * LH + L.size * .25};
+  });
+  boxes.forEach(b => { if (b.y0 < 0 || b.y1 > h || b.x0 < -2 || b.x1 > w + 2) out.push(`El campo «${esc(b.f.label)}» queda parcialmente fuera de la hoja.`); });
+  for (let a = 0; a < boxes.length; a++) for (let c = a + 1; c < boxes.length; c++){
+    const A = boxes[a], B = boxes[c];
+    if (A.x0 < B.x1 && B.x0 < A.x1 && A.y0 < B.y1 && B.y0 < A.y1) out.push(`Los campos «${esc(A.f.label)}» y «${esc(B.f.label)}» se superponen. Sepáralos en el diseño.`);
+  }
+  boxes.forEach(b => {
+    const hit = (S.tplText || []).filter(t => t.x0 < b.x1 && b.x0 < t.x1 && t.y > b.y0 && t.y < b.y1 + 2).map(t => t.s);
+    if (hit.length){ const s = hit.join(' ').slice(0, 60); out.push(`La plantilla ya tiene el texto «${esc(s)}» donde va el campo «${esc(b.f.label)}». Si subiste un certificado ya diligenciado, el dato nuevo quedará encima del anterior.`); }
+  });
+  return out;
+}
 function validate(){
   const g = [], unknown = new Set(), refCols = new Set();
   S.fields.forEach(f => refs(f.text).forEach(k => { const c = colFor(k); c ? refCols.add(c) : unknown.add(k); }));
   if (S.rows.length){
     refs($('pattern').value).forEach(k => { if (!colFor(k)) unknown.add(k); });
-    if (unknown.size) g.push(`Estas columnas no existen en la base: ${[...unknown].map(k => '{'+esc(k)+'}').join(', ')}. El texto entre llaves debe coincidir con un encabezado del Excel.`);
+    if (unknown.size) g.push(`Estas columnas no existen en la base: ${[...unknown].map(k => '{' + esc(k) + '}').join(', ')}. El texto entre llaves debe coincidir con un encabezado del Excel.`);
     if (!S.detect.mail) g.push('No encontré una columna de correo. El Excel de control saldrá sin correos.');
+    if (S.detect.mail && S.rows.length >= 5){
+      const bad = S.rows.filter(r => norm(r[S.detect.mail]) && !/@/.test(r[S.detect.mail])).length;
+      if (bad / S.rows.length > .3) g.push(`En la columna «${esc(S.detect.mail)}» la mayoría de datos no son correos. Revisa que sea la columna correcta.`);
+    }
   }
+  if (S.base) g.push(...designIssues());
   S.global = g;
-  const d = S.detect, docMap = {}, fnMap = {};
-  S.rows.forEach((r,i) => {
-    if (d.doc){ const v = cleanDoc(r[d.doc]); if (v) (docMap[v] = docMap[v] || []).push(i); }
-    const fn = fileName(r).toLowerCase(); (fnMap[fn] = fnMap[fn] || []).push(i);
+  const d = S.detect, maps = {doc:{}, mail:{}, name:{}, fn:{}}, typeCount = {};
+  const push = (m, k, i) => { if (k) (m[k] = m[k] || []).push(i); };
+  const nameKey = r => fold(nameKeys(r).name).replace(/[^a-z ]/g,'').replace(/\s+/g,' ').trim();
+  S.rows.forEach((r, i) => {
+    if (d.doc) push(maps.doc, cleanDoc(r[d.doc]), i);
+    if (d.mail) push(maps.mail, cleanMail(r[d.mail]), i);
+    push(maps.name, nameKey(r), i);
+    push(maps.fn, fileName(r).toLowerCase(), i);
+    if (d.type){ const t = norm(r[d.type]); if (t){ const k = typeKey(t); (typeCount[k] = typeCount[k] || {})[t] = (typeCount[k][t] || 0) + 1; } }
   });
-  S.res = S.base ? S.rows.map((r,i) => {
-    const it = []; const add = (lv,m) => it.push({lv,m});
-    refCols.forEach(c => { if (!norm(r[c])) add('err', `Falta ${c}`); });
+  const typeBest = {}; for (const k in typeCount) typeBest[k] = Object.entries(typeCount[k]).sort((a, b) => b[1] - a[1])[0][0];
+  const others = (arr, i) => arr.filter(x => x !== i).map(x => S.rowN[x]).join(', ');
+  const nameCols = d.full ? [d.full] : [d.first, d.last].filter(Boolean);
+  S.res = S.base ? S.rows.map((r, i) => {
+    const it = [], add = (lv, code, m, col, fix) => it.push({lv, code, m, col, fix});
+    refCols.forEach(c => { if (!norm(r[c])) add('err', 'missing', `Falta ${c}`, c); });
     S.fields.forEach(f => {
-      const L = layout(f, fieldLines(f, r));
-      if (L.err) add('err', `${f.label}: tiene un carácter que la fuente no admite`);
-      else if (L.size < 6) add('err', `${f.label}: el texto no cabe`);
-      else if (L.ratio < .8) add('warn', `${f.label}: letra reducida al ${Math.round(L.ratio*100)} %`);
+      const L = layout(f, fieldLines(f, r)), fc = refs(f.text).map(colFor).find(Boolean);
+      if (L.err) add('err', 'glyph', `${f.label}: tiene un carácter que no se puede imprimir`, fc);
+      else if (L.size < 6) add('err', 'fit', `${f.label}: el texto no cabe en el certificado`, fc);
+      else if (L.ratio < .8) add('warn', 'shrink', `${f.label}: la letra se reduce al ${Math.round(L.ratio * 100)} %`, fc);
     });
-    [d.full, d.first, d.last].filter(Boolean).forEach(c => { if (refCols.has(c) && /\d/.test(r[c])) add('warn', `${c} tiene números`); });
+    const nm = nameKeys(r).name, nc = nameCols[0];
+    if (nm){
+      if (/@/.test(nm)) add('err', 'nameMail', 'En el nombre hay un correo electrónico', nc);
+      else {
+        if (/\d/.test(nm)) add('warn', 'nameNum', 'El nombre tiene números', nc);
+        if (/[^\p{L}\s.'’-]/u.test(nm.replace(/\d/g,''))) add('warn', 'nameSym', 'El nombre tiene símbolos extraños', nc);
+        const w = nm.split(' ').filter(Boolean);
+        if (w.length < 2 && !d.last) add('warn', 'nameShort', 'Solo tiene una palabra: puede faltar el apellido', nc);
+        const same = d.first && d.last && fold(norm(r[d.first])) && fold(norm(r[d.first])) === fold(norm(r[d.last]));
+        if (same) add('warn', 'nameSame', 'Nombres y apellidos tienen el mismo texto', d.last);
+        else for (let k = 1; k < w.length; k++) if (fold(w[k]) === fold(w[k-1]) && !SMALL.has(fold(w[k]))){ add('warn', 'nameRep', `Palabra repetida: «${w[k]}»`, nc); break; }
+        const tc = nameCols.find(c => TITLE_RE.test(norm(r[c])));
+        if (tc) add('warn', 'nameTitle', 'Incluye un título (Dr., Dra.) que saldrá en el certificado', tc, {label:'Quitar título', col:tc, to:norm(r[tc]).replace(TITLE_RE, '')});
+      }
+      const nk = nameKey(r);
+      if (nk && maps.name[nk].length > 1 && !(d.doc && maps.name[nk].every(x => cleanDoc(S.rows[x][d.doc]) === cleanDoc(r[d.doc]))))
+        add('warn', 'dupname', `Mismo nombre que la fila ${others(maps.name[nk], i)}, con otro documento`, nc);
+    }
     let dupDoc = false;
     if (d.doc){
       const raw = norm(r[d.doc]), cl = cleanDoc(r[d.doc]);
-      if (cl && raw !== cl) add('info', 'Documento sin puntos ni espacios');
-      if (cl && docMap[cl].length > 1){ dupDoc = true; add('err', `Documento repetido (filas ${docMap[cl].map(x => S.rowN[x]).join(', ')})`); }
+      if (cl){
+        if (maps.doc[cl].length > 1){ dupDoc = true; add('err', 'dupdoc', `El mismo documento está en la fila ${others(maps.doc[cl], i)}`, d.doc); }
+        if (d.type && /^(cc|ceduladeciudadania|cedulaciudadania)$/.test(fold(norm(r[d.type])).replace(/[.\s]/g,''))){
+          if (/\D/.test(cl)) add('warn', 'docAlpha', 'Una cédula de ciudadanía colombiana (C.C.) solo lleva números', d.doc);
+          else if (cl.length < 5 || cl.length > 10) add('warn', 'docLen', `La C.C. tiene ${cl.length} dígitos (en Colombia suelen ser de 6 a 10)`, d.doc);
+        }
+        if (d.cel && cl === cleanCel(r[d.cel])) add('warn', 'docCel', 'El documento es igual al celular', d.doc);
+        if (raw !== cl) add('info', 'docClean', 'Se quitarán puntos o espacios del documento', d.doc);
+      }
     }
-    if (d.mail){ const raw = norm(r[d.mail]), m = cleanMail(r[d.mail]); if (!m) add('warn', 'Sin correo'); else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m)) add('warn', 'Correo con formato inválido'); else if (raw !== m) add('info', 'Correo corregido (minúsculas o espacios)'); }
-    if (d.cel){ const c = cleanCel(r[d.cel]); if (!c) add('warn', 'Sin celular'); else if (!/^\+?\d{7,15}$/.test(c)) add('warn', 'Celular con formato inválido'); }
-    if (!dupDoc && !$('numChk').checked && fnMap[fileName(r).toLowerCase()].length > 1) add('err', 'Nombre de archivo repetido');
-    return it;
+    if (d.type){
+      const t = norm(r[d.type]);
+      if (!t){ if (!refCols.has(d.type)) add('warn', 'typeMiss', 'Sin tipo de documento', d.type); }
+      else { const best = typeBest[typeKey(t)]; if (best && best !== t) add('warn', 'typeVar', `Escrito «${t}»; en el resto de la base aparece «${best}»`, d.type, {label:`Usar «${best}»`, col:d.type, to:best}); }
+    }
+    if (d.mail){
+      const raw = norm(r[d.mail]), m = cleanMail(r[d.mail]);
+      if (!m) add('warn', 'mailMiss', 'Sin correo: no se le podrá enviar el certificado', d.mail);
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m)){
+        const other = S.cols.find(c => c !== d.mail && /@/.test(norm(r[c])));
+        if (other) add('warn', 'cross', `El correo parece estar en la columna «${other}»`, d.mail);
+        else add('warn', 'mailBad', 'El correo no tiene un formato válido', d.mail);
+      } else {
+        const fx = mailFix(m);
+        if (fx) add('warn', 'mailTypo', `¿Quisiste decir ${fx}?`, d.mail, {label:'Corregir', col:d.mail, to:fx});
+        else if (raw !== m) add('info', 'mailClean', 'Se ajustará a minúsculas y sin espacios', d.mail);
+        if (maps.mail[m].length > 1 && !dupDoc) add('warn', 'dupmail', `Mismo correo que la fila ${others(maps.mail[m], i)}`, d.mail);
+      }
+    }
+    if (d.cel){
+      const c = cleanCel(r[d.cel]);
+      if (!c) add('warn', 'celMiss', 'Sin celular', d.cel);
+      else if (!/^\+?\d{7,15}$/.test(c)) add('warn', 'celBad', 'El celular tiene letras o símbolos', d.cel);
+      else {
+        const co = /^\+?57/.test(c) ? c.replace(/^\+?57/, '') : (!c.startsWith('+') && /^3\d{8}$|^3\d{10}$/.test(c) ? c : null);
+        if (co !== null && !(co.length === 10 && co[0] === '3')) add('warn', 'celLen', `Si es un celular colombiano, tiene ${co.length} dígitos (son 10 y empiezan por 3)`, d.cel);
+      }
+    }
+    if (!dupDoc && !$('numChk').checked && maps.fn[fileName(r).toLowerCase()].length > 1) add('err', 'filedup', 'Nombre de archivo repetido', null);
+    return it.sort((a, b) => LV_ORDER[a.lv] - LV_ORDER[b.lv]);
   }) : [];
   renderGlobal(); renderReview(); updateGen();
 }
 function renderGlobal(){ $('globalIssues').innerHTML = S.global.map(m => `<div class="gissue">${m}</div>`).join(''); }
 function rowState(i){ const it = S.res[i] || []; return it.some(x => x.lv === 'err') ? 'err' : it.some(x => x.lv === 'warn') ? 'warn' : 'ok'; }
-function renderReview(){
-  const n = S.rows.length, tb = $('tbody');
-  const cnt = {ok:0, warn:0, err:0}; S.rows.forEach((_,i) => cnt[rowState(i)]++);
-  const rc = $('revCount'); rc.hidden = !n || !S.base; rc.textContent = cnt.err ? cnt.err : n; rc.className = 'cnt' + (cnt.err ? ' err' : '');
-  rc.title = cnt.err ? `${cnt.err} con errores` : `${n} participantes`;
-  $('stats').innerHTML = n && S.base ? `<div class="stat"><b>${n}</b>participantes</div><div class="stat ok"><b>${cnt.ok}</b>listos</div><div class="stat warn"><b>${cnt.warn}</b>con advertencias</div><div class="stat err"><b>${cnt.err}</b>con errores</div>` : '';
-  if (!n || !S.base){ tb.innerHTML = `<tr><td colspan="7" class="empty-row">${!S.base ? 'Sube la plantilla y la base de participantes para revisarlas aquí.' : 'Sube la base de participantes para revisarla aquí.'}</td></tr>`; return; }
-  const d = S.detect, nf = nameField(); let html = '';
-  S.order.forEach(i => { const r = S.rows[i];
-    const st = rowState(i); if (S.filter !== 'all' && S.filter !== st) return;
-    const inc = included(i); const it = S.res[i] || [];
-    const tags = it.length ? it.map(x => `<span class="tag ${x.lv}">${esc(x.m)}</span>`).join('') : '<span class="tag ok">Listo</span>';
-    html += `<tr class="${inc ? '' : 'off'}"><td><input type="checkbox" data-inc="${i}"${inc ? ' checked' : ''} aria-label="Incluir fila ${S.rowN[i]}"></td><td class="n">${S.rowN[i]}</td><td class="nm">${esc(nf ? fieldLines(nf, r).join(' ') : '')}</td><td>${esc(d.doc ? cleanDoc(r[d.doc]) : '')}</td><td>${esc(d.mail ? cleanMail(r[d.mail]) : '')}</td><td>${tags}</td><td><button class="btn ghost small" data-see="${i}">Ver</button></td></tr>`;
-  });
-  tb.innerHTML = html || '<tr><td colspan="7" class="empty-row">No hay filas en este filtro.</td></tr>';
+function isEdited(i){ for (const k of S.edited) if (k.startsWith(i + '|')) return true; return false; }
+function rowMatch(i){
+  const f = S.filter;
+  if (f === 'edit' && !isEdited(i)) return false;
+  if (f.startsWith('code:') && !(S.res[i] || []).some(x => x.code === f.slice(5))) return false;
+  if (['ok','warn','err'].includes(f) && rowState(i) !== f) return false;
+  const q = fold($('revQ').value); if (!q) return true;
+  const r = S.rows[i], d = S.detect;
+  return [nameKeys(r).name, d.doc ? cleanDoc(r[d.doc]) : '', d.mail ? cleanMail(r[d.mail]) : '', String(S.rowN[i])].some(v => fold(v).includes(q));
 }
-$('tbody').addEventListener('change', e => { const i = e.target.dataset.inc; if (i == null) return; S.override[+i] = e.target.checked; e.target.closest('tr').classList.toggle('off', !e.target.checked); updateGen(); });
-$('tbody').addEventListener('click', e => { const i = e.target.dataset.see; if (i == null) return; S.cur = +i; $('rowSel').value = i; drawOverlay(); openPreview(); });
-$('allChk').addEventListener('change', e => { $('tbody').querySelectorAll('[data-inc]').forEach(c => { c.checked = e.target.checked; S.override[+c.dataset.inc] = e.target.checked; c.closest('tr').classList.toggle('off', !e.target.checked); }); updateGen(); });
-$('filters').addEventListener('click', e => { const f = e.target.dataset.f; if (!f) return; S.filter = f; $('filters').querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.f === f)); renderReview(); });
+function viewCols(){
+  const d = S.detect, out = [], seen = new Set(), add = (c, l) => { if (c && !seen.has(c)){ seen.add(c); out.push({c, l}); } };
+  if (d.full) add(d.full, 'Nombre completo'); else { add(d.first, 'Nombres'); add(d.last, 'Apellidos'); }
+  add(d.type, 'Tipo'); add(d.doc, 'Documento'); add(d.mail, 'Correo'); add(d.cel, 'Celular');
+  S.fields.forEach(f => refs(f.text).map(colFor).forEach(c => add(c, c)));
+  return out;
+}
+function renderReview(){
+  const n = S.rows.length, tb = $('tbody'), th = $('thead');
+  const cnt = {ok:0, warn:0, err:0}; S.rows.forEach((_, i) => cnt[rowState(i)]++);
+  const ready = n && S.base;
+  const rc = $('revCount'); rc.hidden = !ready; rc.textContent = cnt.err ? cnt.err : n; rc.className = 'cnt' + (cnt.err ? ' err' : '');
+  rc.title = cnt.err ? `${cnt.err} con errores` : `${n} participantes`;
+  $('fixedBtn').disabled = !S.edited.size;
+  $('fixedBtn').textContent = S.edited.size ? `Descargar base corregida (${S.edited.size} cambio${S.edited.size === 1 ? '' : 's'})` : 'Descargar base corregida';
+  $('designIssues').innerHTML = S.base && S.global.length ? `<div class="dbox"><strong>Revisa el diseño</strong>${S.global.map(m => `<p>${m}</p>`).join('')}</div>` : '';
+  const st = $('revStatus');
+  if (!ready){
+    st.hidden = true; $('stats').innerHTML = ''; $('issues').innerHTML = ''; th.innerHTML = '';
+    tb.innerHTML = `<tr><td class="empty-row">${!S.base ? 'Sube la plantilla y la base de participantes para revisarlas aquí.' : 'Sube la base de participantes para revisarla aquí.'}</td></tr>`; return;
+  }
+  st.hidden = false;
+  const inc = S.rows.reduce((a, _, i) => a + (included(i) ? 1 : 0), 0);
+  if (cnt.err){ st.className = 'rev-status err'; st.innerHTML = `<span class="ico">!</span><div><b>${cnt.err} participante${cnt.err === 1 ? ' tiene' : 's tienen'} errores</b>Quedan fuera del lote hasta corregirlos. Haz clic sobre el dato para corregirlo aquí mismo.</div>`; }
+  else if (cnt.warn){ st.className = 'rev-status warn'; st.innerHTML = `<span class="ico">✓</span><div><b>Listo para generar ${inc} certificado${inc === 1 ? '' : 's'}</b>Hay ${cnt.warn} con advertencias: no impiden generar, pero conviene revisarlas.</div>`; }
+  else { st.className = 'rev-status ok'; st.innerHTML = `<span class="ico">✓</span><div><b>Todo en orden</b>Los ${n} certificados están listos para generar.</div>`; }
+  const tile = (f, num, label, cls) => `<button class="tile ${cls}${S.filter === f ? ' on' : ''}" data-f="${f}"><b>${num}</b>${label}</button>`;
+  $('stats').innerHTML = tile('all', n, 'participantes', '') + tile('ok', cnt.ok, 'listos', 'ok') + tile('warn', cnt.warn, 'con advertencias', 'warn') + tile('err', cnt.err, 'con errores', 'err') + (S.edited.size ? tile('edit', [...new Set([...S.edited].map(k => k.split('|')[0]))].length, 'corregidos aquí', 'edit') : '');
+  const groups = {};
+  S.res.forEach((it, i) => it.forEach(x => { const gp = groups[x.code] = groups[x.code] || {lv:x.lv, rows:new Set(), fix:0}; gp.rows.add(i); if (x.fix) gp.fix++; if (LV_ORDER[x.lv] < LV_ORDER[gp.lv]) gp.lv = x.lv; }));
+  const gl = Object.entries(groups).sort((a, b) => LV_ORDER[a[1].lv] - LV_ORDER[b[1].lv] || b[1].rows.size - a[1].rows.size);
+  $('issues').innerHTML = gl.length ? `<span class="itl">Qué se encontró</span>` + gl.map(([code, gp]) => `<span class="ig ${gp.lv}${S.filter === 'code:' + code ? ' on' : ''}"><button data-f="code:${code}" title="Mostrar solo estas filas">${esc(CODE_T[code] || code)} <span class="c">${gp.rows.size}</span></button>${gp.fix > 1 ? `<button class="fa" data-fixall="${code}" title="Aplicar la corrección sugerida en todas">Corregir todos</button>` : ''}</span>`).join('') : '';
+  const cols = viewCols();
+  th.innerHTML = `<tr><th><input type="checkbox" id="allChk" aria-label="Incluir o excluir todas las filas visibles"></th><th>Fila</th>${cols.map(c => `<th>${esc(c.l)}</th>`).join('')}<th></th></tr>`;
+  const act = document.activeElement, keep = act && act.classList && act.classList.contains('cell') ? {i:act.dataset.i, c:act.dataset.c, v:act.value, s:act.selectionStart} : null;
+  let html = '';
+  S.order.forEach(i => {
+    if (!rowMatch(i)) return;
+    const r = S.rows[i], it = S.res[i] || [], on = included(i);
+    const cells = cols.map(({c}) => {
+      const iss = it.filter(x => x.col === c && x.lv !== 'info'), lv = iss.some(x => x.lv === 'err') ? 'err' : iss.length ? 'warn' : '';
+      const ed = S.edited.has(i + '|' + c), orig = ed ? `Valor original: ${norm(S.orig[i][c]) || '(vacío)'}` : '';
+      const tip = [...iss.map(x => x.m), orig].filter(Boolean).join(' · ');
+      return `<td><input class="cell ${lv}${ed ? ' edited' : ''}" data-i="${i}" data-c="${esc(c)}" value="${esc(norm(r[c]))}" title="${esc(tip)}" aria-label="${esc(c)} de la fila ${S.rowN[i]}" spellcheck="false"></td>`;
+    }).join('');
+    const tags = it.map((x, k) => `<span class="tag ${x.lv}">${esc(x.m)}${x.fix ? `<button data-fix="${i}:${k}">${esc(x.fix.label)}</button>` : ''}</span>`).join('');
+    const stc = rowState(i);
+    html += `<tr class="${on ? '' : 'off'} st-${stc}${it.length ? ' has-sub' : ''}"><td><input type="checkbox" data-inc="${i}"${on ? ' checked' : ''} aria-label="Incluir fila ${S.rowN[i]}"></td><td class="n">${S.rowN[i]}</td>${cells}<td class="act"><button class="btn ghost small" data-see="${i}">Ver</button></td></tr>`;
+    if (it.length) html += `<tr class="sub ${on ? '' : 'off'} st-${stc}"><td></td><td class="n"></td><td colspan="${cols.length + 1}" class="tg">${tags}</td></tr>`;
+  });
+  tb.innerHTML = html || `<tr><td colspan="${cols.length + 3}" class="empty-row">No hay filas con este filtro o búsqueda.</td></tr>`;
+  if (keep){ const el = tb.querySelector(`.cell[data-i="${keep.i}"][data-c="${CSS.escape(keep.c)}"]`); if (el){ el.value = keep.v; el.focus(); try { el.setSelectionRange(keep.s, keep.s); } catch(e){} } }
+}
+function setCell(i, c, v){
+  S.rows[i][c] = v;
+  const k = i + '|' + c; if (norm(v) === norm(S.orig[i][c])) S.edited.delete(k); else S.edited.add(k);
+  delete S.override[i];
+}
+function afterEdit(){ renderRowSel(); drawOverlay(); validate(); }
+let eT;
+$('tbody').addEventListener('change', e => {
+  const t = e.target;
+  if (t.dataset.inc != null){ S.override[+t.dataset.inc] = t.checked; t.closest('tr').classList.toggle('off', !t.checked); updateGen(); renderReview(); return; }
+  if (t.classList.contains('cell')){ setCell(+t.dataset.i, t.dataset.c, t.value); clearTimeout(eT); eT = setTimeout(afterEdit, 60); }
+});
+$('tbody').addEventListener('keydown', e => {
+  if (!e.target.classList.contains('cell')) return;
+  if (e.key === 'Enter'){ e.preventDefault(); const t = e.target, row = t.closest('tr').nextElementSibling, nx = row && row.querySelector(`.cell[data-c="${CSS.escape(t.dataset.c)}"]`); (nx || t).focus(); if (!nx) t.blur(); }
+  if (e.key === 'Escape'){ const t = e.target; t.value = norm(S.rows[+t.dataset.i][t.dataset.c]); t.blur(); }
+});
+$('tbody').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.see != null){ S.cur = +b.dataset.see; $('rowSel').value = b.dataset.see; drawOverlay(); openPreview(); }
+  if (b.dataset.fix){ const [i, k] = b.dataset.fix.split(':').map(Number), x = S.res[i][k]; setCell(i, x.fix.col, x.fix.to); toast('Corregido'); afterEdit(); }
+});
+$('thead').addEventListener('change', e => {
+  if (e.target.id !== 'allChk') return;
+  $('tbody').querySelectorAll('[data-inc]').forEach(c => { c.checked = e.target.checked; S.override[+c.dataset.inc] = e.target.checked; c.closest('tr').classList.toggle('off', !e.target.checked); });
+  updateGen(); renderReview();
+});
+function setFilter(f){ S.filter = S.filter === f && f !== 'all' ? 'all' : f; renderReview(); }
+$('stats').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if (b) setFilter(b.dataset.f); });
+$('issues').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.f) return setFilter(b.dataset.f);
+  if (b.dataset.fixall){ let n = 0; S.res.forEach((it, i) => it.forEach(x => { if (x.code === b.dataset.fixall && x.fix){ setCell(i, x.fix.col, x.fix.to); n++; } })); toast(`${n} correcciones aplicadas`); afterEdit(); }
+});
+$('revQ').addEventListener('input', () => renderReview());
+$('fixedBtn').addEventListener('click', () => {
+  const aoa = [S.cols, ...S.rows.map(r => S.cols.map(c => r[c] ?? ''))];
+  const ws = XLSX.utils.aoa_to_sheet(aoa); ws['!cols'] = S.cols.map(() => ({wch:24}));
+  const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, (S.sheet || 'Participantes').slice(0, 31));
+  download(new Blob([XLSX.write(wb, {type:'array', bookType:'xlsx'})], {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}), (S.baseName || 'Base') + ' (corregida).xlsx');
+  toast('Base corregida descargada');
+});
 
 /* ---------- generación ---------- */
 function drawFields(page, fonts, row){
@@ -803,6 +1085,9 @@ function updateGen(){
   const n = S.rows.reduce((a,_,i) => a + (included(i) ? 1 : 0), 0);
   const b = $('genBtn'); b.disabled = !S.base || !n; b.textContent = n ? `Generar ${n} certificado${n === 1 ? '' : 's'}` : 'Generar certificados';
   $('ctrlBtn').disabled = !S.rows.length || !S.base; $('mergeBtn').disabled = !S.base || !n;
+  const out = S.rows.length - n, wInc = S.rows.filter((_, i) => included(i) && rowState(i) === 'warn').length;
+  const parts = []; if (out) parts.push(`${out} fuera del lote`); if (wInc) parts.push(`${wInc} con advertencias`);
+  $('genSum').innerHTML = S.base && S.rows.length && parts.length ? `${parts.join(' · ')} <button type="button" data-goto="review">Ver revisión</button>` : '';
   $('st1').classList.toggle('done', !!S.base); $('st2').classList.toggle('done', !!S.rows.length);
   $('st3').classList.toggle('done', !!(S.base && S.fields.length && S.rows.length && !S.global.some(m => m.startsWith('Estas columnas'))));
 }
@@ -846,6 +1131,62 @@ $('ctrlBtn').addEventListener('click', () => {
   download(new Blob([controlXlsx(planFiles())], {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}), 'control_envio.xlsx');
 });
 
+/* ---------- certificado individual ---------- */
+function singleKeys(){
+  const ks = [], seen = new Set(), add = k => { const c = colFor(k) || k, f = fold(c); if (!seen.has(f)){ seen.add(f); ks.push(c); } };
+  S.fields.forEach(f => refs(f.text).forEach(add));
+  refs($('pattern').value).forEach(add);
+  if (S.detect.mail) add(S.detect.mail);
+  return ks;
+}
+function renderSingleForm(){
+  const ks = singleKeys(), nf = nameField();
+  let h = `<p class="hint">Escribe los datos de la persona. El certificado se actualiza a la derecha mientras escribes.</p>`;
+  if (S.rows.length) h += `<label class="lbl">Tomar datos de la base<select id="sPick"><option value="">Escribir a mano</option>${S.order.map(i => `<option value="${i}">${esc(nf ? fieldLines({...nf, upper:false}, S.rows[i]).join(' ') : 'Fila ' + S.rowN[i])}</option>`).join('')}</select></label>`;
+  h += ks.map(k => `<label class="lbl">${esc(k)}<input data-sk="${esc(k)}" value="${esc(S.single[k] || '')}" spellcheck="false"></label>`).join('');
+  h += `<div id="sIssues"></div>`;
+  $('sForm').innerHTML = h;
+  const pick = $('sPick');
+  if (pick) pick.addEventListener('change', () => { const i = pick.value; if (i === '') return; const r = S.rows[+i]; ks.forEach(k => S.single[k] = norm(r[k] ?? '')); $('sForm').querySelectorAll('[data-sk]').forEach(el => el.value = S.single[el.dataset.sk] || ''); previewSingle(); });
+  $('sForm').querySelectorAll('[data-sk]').forEach(el => el.addEventListener('input', () => { S.single[el.dataset.sk] = el.value; clearTimeout(sT); sT = setTimeout(previewSingle, 300); }));
+}
+let sT, sSeq = 0;
+function singleIssues(){
+  const out = [];
+  singleKeys().forEach(k => { if (!norm(S.single[k])) out.push(['warn', `Falta ${k}`]); });
+  S.fields.forEach(f => { const L = layout(f, fieldLines(f, S.single)); if (L.err) out.push(['err', `${f.label}: tiene un carácter que no se puede imprimir`]); else if (L.ratio < .8) out.push(['warn', `${f.label}: la letra se reduce al ${Math.round(L.ratio * 100)} %`]); });
+  const mk = S.detect.mail || Object.keys(S.single).find(k => /correo|mail/.test(fold(k)));
+  if (mk && norm(S.single[mk])){ const m = cleanMail(S.single[mk]); if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m)) out.push(['warn', 'El correo no tiene un formato válido']); else { const fx = mailFix(m); if (fx) out.push(['warn', `¿El correo es ${fx}?`]); } }
+  return out;
+}
+async function previewSingle(){
+  const my = ++sSeq, iss = singleIssues();
+  $('sIssues').innerHTML = iss.length ? iss.map(([lv, m]) => `<span class="tag ${lv}">${esc(m)}</span>`).join('') : '<span class="tag ok">Sin observaciones</span>';
+  $('sDown').disabled = iss.some(x => x[0] === 'err');
+  try {
+    const bytes = await buildOne(S.single); if (my !== sSeq) return;
+    S.singleBytes = bytes;
+    const doc = await pdfjsLib.getDocument({data: bytes.slice()}).promise, pg = await doc.getPage(1);
+    const w = Math.min($('sBody').clientWidth - 36, 1000), vp1 = pg.getViewport({scale:1}), dpr = window.devicePixelRatio || 1;
+    const vp = pg.getViewport({scale: w / vp1.width * dpr}), cv = $('sCv');
+    cv.width = Math.round(vp.width); cv.height = Math.round(vp.height); cv.style.width = w + 'px';
+    const ctx = cv.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cv.width, cv.height);
+    await pg.render({canvasContext:ctx, viewport:vp}).promise; doc.destroy();
+  } catch(e){ console.error(e); S.singleBytes = null; }
+}
+$('singleBtn').addEventListener('click', () => {
+  if (!S.base) return;
+  S.single = S.single || {}; renderSingleForm(); $('single').hidden = false;
+  setTimeout(() => { const el = $('sForm').querySelector('[data-sk], select'); if (el) el.focus(); previewSingle(); }, 30);
+});
+$('sClose').addEventListener('click', () => $('single').hidden = true);
+$('single').addEventListener('click', e => { if (e.target === $('single')) $('single').hidden = true; });
+$('sDown').addEventListener('click', async () => {
+  const bytes = S.singleBytes || await buildOne(S.single);
+  download(new Blob([bytes], {type:'application/pdf'}), fileName(S.single));
+  toast('Certificado descargado');
+});
+
 /* ---------- vista previa real ---------- */
 async function openPreview(){
   if (!S.base) return;
@@ -866,7 +1207,7 @@ function closeModal(){ $('modal').hidden = true; }
 $('realPrev').addEventListener('click', openPreview);
 $('mClose').addEventListener('click', closeModal);
 $('modal').addEventListener('click', e => { if (e.target === $('modal')) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape'){ if (!$('modal').hidden) closeModal(); if (S.pick){ S.pick = null; $('stage').classList.remove('picking'); } } });
+document.addEventListener('keydown', e => { if (e.key === 'Escape'){ if (!$('modal').hidden) closeModal(); if (!$('single').hidden) $('single').hidden = true; if (S.pick){ S.pick = null; $('stage').classList.remove('picking'); } } });
 $('mDown').addEventListener('click', () => { if (S.lastPrev) download(new Blob([S.lastPrev.bytes], {type:'application/pdf'}), S.lastPrev.name); });
 
 /* ---------- navegación de participantes ---------- */
@@ -929,8 +1270,9 @@ document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () =>
 let rzT; const onRz = () => { clearTimeout(rzT); rzT = setTimeout(() => { if (!$('pDesign').hidden) renderBase(); }, 150); };
 new ResizeObserver(onRz).observe($('stageWrap')); window.addEventListener('resize', onRz);
 
+$('genSum').addEventListener('click', e => { if (e.target.dataset.goto) document.querySelector('.tab[data-tab=review]').click(); });
 function refreshAll(){
-  $('addField').disabled = !S.base; $('modelSave').disabled = !S.base; $('realPrev').disabled = !S.base;
+  $('addField').disabled = !S.base; $('modelSave').disabled = !S.base; $('realPrev').disabled = !S.base; $('singleBtn').disabled = !S.base;
   renderColInfo(); renderOrder(); renderPatternChips(); renderFields(); renderRowSel(); validate(); drawOverlay();
 }
 refreshAll();
