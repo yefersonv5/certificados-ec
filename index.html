@@ -294,7 +294,7 @@ td:has(> input.cell[data-c*="orreo"]),td:has(> input.cell[data-c*="ail"]){min-wi
     <p class="gensum" id="genSum"></p>
     <div class="progress" id="prog" hidden><div id="progBar"></div></div>
     <p class="hint small" id="genInfo"></p>
-    <p class="hint small">Se descarga un ZIP con un PDF por participante y el archivo control_envio.xlsx para hacer el envío con Power Automate. Si necesitas todos los certificados juntos, descárgalos en un solo PDF.</p>
+    <p class="hint small">Se descarga un ZIP con un PDF por participante y el archivo control_envio.xlsx, que ya viene como tabla (Tabla1) para hacer el envío con Power Automate. Si necesitas todos los certificados juntos, descárgalos en un solo PDF.</p>
     <button class="btn ghost small block" id="mergeBtn" disabled>Descargar todos en un solo PDF</button>
     <button class="btn ghost small block" id="ctrlBtn" disabled>Descargar solo el Excel de control</button>
     <div class="single-box">
@@ -1079,7 +1079,29 @@ function controlXlsx(plan){
   const ws = XLSX.utils.json_to_sheet(rows, {header:hdr});
   ws['!cols'] = [{wch:38},{wch:12},{wch:16},{wch:34},{wch:16}, ...extras.map(() => ({wch:22})), {wch:24},{wch:34},{wch:10}];
   const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, 'Envio');
-  return XLSX.write(wb, {type:'array', bookType:'xlsx'});
+  return addTable(XLSX.write(wb, {type:'array', bookType:'xlsx'}), hdr, rows.length);
+}
+// Convierte los datos en la tabla "Tabla1" para que Power Automate la lea sin pasos manuales
+async function addTable(buf, hdr, n){
+  if (!n) return new Uint8Array(buf);
+  const x = v => String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  const col = k => { let s = ''; k++; while (k){ const m = (k - 1) % 26; s = String.fromCharCode(65 + m) + s; k = Math.floor((k - 1) / 26); } return s; };
+  const ref = `A1:${col(hdr.length - 1)}${n + 1}`;
+  const zip = await JSZip.loadAsync(buf);
+  zip.file('xl/tables/table1.xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<table xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" id="1" name="Tabla1" displayName="Tabla1" ref="${ref}" totalsRowShown="0"><autoFilter ref="${ref}"/><tableColumns count="${hdr.length}">${hdr.map((h, i) => `<tableColumn id="${i + 1}" name="${x(h)}"/>`).join('')}</tableColumns><tableStyleInfo name="TableStyleMedium2" showFirstColumn="0" showLastColumn="0" showRowStripes="1" showColumnStripes="0"/></table>`);
+  const sp = 'xl/worksheets/sheet1.xml', rp = 'xl/worksheets/_rels/sheet1.xml.rels';
+  let sh = await zip.file(sp).async('string');
+  if (!/xmlns:r=/.test(sh)) sh = sh.replace('<worksheet ', '<worksheet xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" ');
+  sh = sh.replace('</worksheet>', '<tableParts count="1"><tablePart r:id="rIdTabla1"/></tableParts></worksheet>');
+  zip.file(sp, sh);
+  const relT = '<Relationship Id="rIdTabla1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/table" Target="../tables/table1.xml"/>';
+  const rf = zip.file(rp);
+  zip.file(rp, rf ? (await rf.async('string')).replace('</Relationships>', relT + '</Relationships>')
+    : `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${relT}</Relationships>`);
+  const ct = await zip.file('[Content_Types].xml').async('string');
+  zip.file('[Content_Types].xml', ct.replace('</Types>', '<Override PartName="/xl/tables/table1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.table+xml"/></Types>'));
+  return zip.generateAsync({type:'uint8array', compression:'DEFLATE'});
 }
 function updateGen(){
   const n = S.rows.reduce((a,_,i) => a + (included(i) ? 1 : 0), 0);
@@ -1127,8 +1149,8 @@ $('tplXlsBtn').addEventListener('click', () => {
   download(new Blob([fromB64(TEMPLATE_XLSX)], {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}), 'Plantilla participantes certificados.xlsx');
   toast('Plantilla descargada');
 });
-$('ctrlBtn').addEventListener('click', () => {
-  download(new Blob([controlXlsx(planFiles())], {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}), 'control_envio.xlsx');
+$('ctrlBtn').addEventListener('click', async () => {
+  download(new Blob([await controlXlsx(planFiles())], {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}), 'control_envio.xlsx');
 });
 
 /* ---------- certificado individual ---------- */
